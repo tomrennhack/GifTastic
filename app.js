@@ -23,10 +23,10 @@ function displayCarGifs() {
                 var pRating = $("<p>").text("Rating: " + results[i].rating.toUpperCase()); // create p-tag with rating
                 var sportsCarImage = $("<img>"); // create and store img tag
                 sportsCarImage.attr("src", results[i].images.fixed_height.url); // set src of img to property from GIPHY API
-
-                sportsCarDiv.append(pRating); // append rating to sportsCarDiv
+                
                 sportsCarDiv.append(sportsCarImage); // append img to sportsCarDiv
-
+                sportsCarDiv.append(pRating); // append rating to sportsCarDiv
+                
                 $("#gifs-view").prepend(sportsCarDiv); // prepend sportsCarDiv to the gifs page area
             }
         });
