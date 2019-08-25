@@ -2,7 +2,7 @@
 
 // VARIABLES
 
-var sportsCarsArray = ["Dodge Viper", "Corvette", "Ferrari", "Maserati", "Lamborghini", "Camaro"];
+var topics = ["Dodge Viper", "Corvette", "Ferrari", "Maserati", "Lamborghini", "Camaro"];
 
 // FUNCTIONS
 
@@ -32,14 +32,14 @@ function displayCarGifs() {
         });
 };
 
-// function to make buttons out of sportsCarsArray
+// function to make buttons out of topics
 function makeButtons() {
-    $("#buttons-view").empty(); // empty out buttons view before adding from sportsCarsArray to avoid dups
+    $("#buttons-view").empty(); // empty out buttons view before adding from topics to avoid dups
 
-    for (var i = 0; i < sportsCarsArray.length; i++) {
+    for (var i = 0; i < topics.length; i++) {
         var b = $("<button class='btn btn-secondary m-2'>"); // create button tag with Bootstrap formatting
-        b.attr("data-name", sportsCarsArray[i]); // set data-name attribute based on car name
-        b.text(sportsCarsArray[i]); // button text set to the car
+        b.attr("data-name", topics[i]); // set data-name attribute based on car name
+        b.text(topics[i]); // button text set to the car
         $("#buttons-view").append(b); // add to the DOM
     }
 }
@@ -52,8 +52,8 @@ $("#add-car").on("click", function (event) {
     var sportsCar = $("#car-input").val().trim();
 
     // Adding the movie from the textbox to our array
-    sportsCarsArray.push(sportsCar);
-    console.log(sportsCarsArray);
+    topics.push(sportsCar);
+    console.log(topics);
 
     // Calling renderButtons which handles the processing of our movie array
     makeButtons();
