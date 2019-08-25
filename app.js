@@ -6,7 +6,7 @@ var topics = ["Dodge Viper", "Corvette", "Ferrari", "Maserati", "Lamborghini", "
 
 // FUNCTIONS
 
-// function for pulling GIPHY GIFS
+// function for pulling from GIPHY
 function displayCarGifs() {
     var sportsCar = $(this).attr("data-name"); // store data name from the button that is clicked
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
@@ -22,9 +22,13 @@ function displayCarGifs() {
                 var sportsCarDiv = $("<div>"); // create div tag for each sportsCar
                 var pRating = $("<p>").text("Rating: " + results[i].rating.toUpperCase()); // create p-tag with rating
                 var sportsCarImage = $("<img>"); // create and store img tag
-                sportsCarImage.attr("src", results[i].images.fixed_height_still.url); // set src of img to property from GIPHY API
-                sportsCarImage.addClass("mx-2");
                 
+                var stillImageURL = results[i].images.fixed_height_still.url; // var to hold URL for still image
+                var animatedURL = results[i].images.fixed_height.url; // var to hold URL for animated image
+                sportsCarImage.attr("src", stillImageURL); // set src of img to property from GIPHY API
+                sportsCarImage.attr("data-state", "still"); // give default state of still for on-click to animate or pause
+                sportsCarImage.addClass("gif mr-4"); // add gif class and margin
+
                 sportsCarDiv.append(sportsCarImage); // append img to sportsCarDiv
                 sportsCarDiv.append(pRating); // append rating to sportsCarDiv
 
@@ -33,7 +37,7 @@ function displayCarGifs() {
         });
 };
 
-// function to make buttons out of topics
+// function to makeButtons using the topics array
 function makeButtons() {
     $("#buttons-view").empty(); // empty out buttons view before adding from topics to avoid dups
 
@@ -43,24 +47,32 @@ function makeButtons() {
         b.text(topics[i]); // button text set to the car
         $("#buttons-view").append(b); // add to the DOM
     }
-}
+};
 
 // function to add new car to the buttons list
 $("#add-car").on("click", function (event) {
     event.preventDefault();
+    var sportsCar = $("#car-input").val().trim(); // grab input from the textbox
+    topics.push(sportsCar); // add car from user-input to the topics array
 
-    // This line grabs the input from the textbox
-    var sportsCar = $("#car-input").val().trim();
-
-    // Adding the movie from the textbox to our array
-    topics.push(sportsCar);
-    console.log(topics);
-
-    // Calling renderButtons which handles the processing of our movie array
-    makeButtons();
+    makeButtons(); // call makeButtons function to generate in buttons-view area
 });
 
+// function to switch between still and animated images
+$(".gif").on("click", function() {
+    console.log("click test");
+    if (state === "still") {
+        $(this).attr("src", animatedURL);
+        $(this).attr("data-state", "animated");
+    } else {
+        $(this).attr("src", stillImageURL);
+        $(this).attr("data-state", "still");
+    }
+});
+
+// displayCarGifs when a button is clicked
 $(document).on("click", "button", displayCarGifs);
 
+// have page makeButtons even when nothing has been clicked yet, based on the default array to begin
 makeButtons();
 
