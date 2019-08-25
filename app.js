@@ -42,7 +42,8 @@ function makeButtons() {
     $("#buttons-view").empty(); // empty out buttons view before adding from topics to avoid dups
 
     for (var i = 0; i < topics.length; i++) {
-        var b = $("<button class='btn btn-secondary m-2'>"); // create button tag with Bootstrap formatting
+        var b = $("<button>"); // create button tag
+        b.addClass("btn btn-secondary m-2"); // add Bootstrap formatting
         b.attr("data-name", topics[i]); // set data-name attribute based on car name
         b.text(topics[i]); // button text set to the car
         $("#buttons-view").append(b); // add to the DOM
