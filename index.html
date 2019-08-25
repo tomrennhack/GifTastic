@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GifTastic</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        h1 {
+            color: gold;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-style: italic;
+            letter-spacing: 2px;
+            font-size: 3.2em;
+        }
+
+        label {
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            letter-spacing: 1px;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- include header as jumbotron -->
+    <div class="jumbotron text-center mt-3 mx-3"
+        style="background-image: url(jumbo-background.jpg); background-size: 600px;">
+        <h1>SPORTS CAR GIFS</h1>
+    </div>
+
+    <div class="row mt-3 mx-3">
+
+        <!-- buttons on the left -->
+        <div class="col-7" id="buttons-view"></div>
+
+        <!-- user input new buttons on the right -->
+        <form class="col mx-3 p-3" id="user-form" style="border: dotted 2px red;">
+            <label for="car-input">Add your favorite sports cars!</label>
+            <input type="text" id="car-input"> <br>
+            <!-- button to submit user-input -->
+            <input id="add-car" type="submit" value="Submit Car" class="btn btn-warning mt-3">
+        </form>
+
+    </div>
+
+    <!-- gifs go here -->
+    <div class="row mt-3 mx-3" id="gifs-view"></div>
+
+    <!-- jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- javascript -->
+    <script type="text/javascript" src="app.js"></script>
+
+</body>
+
+</html>
