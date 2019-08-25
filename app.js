@@ -22,11 +22,12 @@ function displayCarGifs() {
                 var sportsCarDiv = $("<div>"); // create div tag for each sportsCar
                 var pRating = $("<p>").text("Rating: " + results[i].rating.toUpperCase()); // create p-tag with rating
                 var sportsCarImage = $("<img>"); // create and store img tag
-                sportsCarImage.attr("src", results[i].images.fixed_height.url); // set src of img to property from GIPHY API
+                sportsCarImage.attr("src", results[i].images.fixed_height_still.url); // set src of img to property from GIPHY API
+                sportsCarImage.addClass("mx-2");
                 
                 sportsCarDiv.append(sportsCarImage); // append img to sportsCarDiv
                 sportsCarDiv.append(pRating); // append rating to sportsCarDiv
-                
+
                 $("#gifs-view").prepend(sportsCarDiv); // prepend sportsCarDiv to the gifs page area
             }
         });
